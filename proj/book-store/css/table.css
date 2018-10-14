@@ -1,0 +1,13 @@
+.read-book{
+    background: green;
+    border: black;
+}
+
+.update-book{
+    background: yellowgreen;
+    border: black;
+}
+.remove-book{
+    background:rgb(146, 34, 34);
+    border: black;
+}
