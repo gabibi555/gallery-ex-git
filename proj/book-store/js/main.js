@@ -1,12 +1,13 @@
 'use strict';
 
-
 function init() {
     render()
+    onSetLang('en')
+
 }
 
 function render() {
-    renderTable()
+    // renderTable()
     renderBooks()
 }
 
@@ -17,7 +18,7 @@ function renderTable() {
         <th class="text-center">Book ID</th>
         <th class="text-center">Book Title</th>
         <th class="text-center">Price</th>
-        <th class="text-center">Actions</th>
+        <th class="text-center" >Actions</th>
     </tr>
     <tbody class="books-list">
 
@@ -26,24 +27,27 @@ function renderTable() {
     document.querySelector('.table').innerHTML = strHtmls
 }
 function renderBooks() {
-    var book = gBooks
     var strHtmls = gBooks.map(function (book) {
         return `<tr>
-                <td>${book.id}</td>
-                <td>${book.title}</td>
-                <td>${book.price}</td>
-                <td>
-                <span><button onclick="renderDetailsModal('${book.id}')" data-toggle="modal" data-target="#book-details" type="button" class="btn btn-danger btn-rounded btn-sm my-0 read-book ">Read
-                Book</button></span>
-                 <span><button id='${book.id}' data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-danger btn-rounded btn-sm my-0 update-book ">Kakon
-                  Book</button></span>
-                 <span><button onclick="onDeleteBook('${book.id}')" type="button" class="btn btn-danger btn-rounded btn-sm my-0 remove-book">Maggot
-                  Book</button></span>
-                </td>
-            </tr>`
+        <td>${book.id}</td>
+        <td>${book.title}</td>
+        <td class="price-list">${getLocalPrice(book.price)}</td>
+        <td>
+            <span><button onclick="renderDetailsModal('${book.id}')" data-toggle="modal" data-target="#book-details" type="button"
+                    class="btn btn-danger btn-rounded btn-sm my-0 read-book "data-trans="read-btn"> ${getTrans('read-btn')}
+                    </button></span>
+            <span><button id='${book.id}' data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-danger btn-rounded btn-sm my-0 update-book " data-trans="update-btn">
+            ${getTrans('update-btn')}
+                    </button></span>
+            <span><button onclick="onDeleteBook('${book.id}')" type="button" class="btn btn-danger btn-rounded btn-sm my-0 remove-book" data-trans="delete-btn">
+            ${getTrans('delete-btn')}
+                    </button></span>
+        </td>
+    </tr>`
     })
     document.querySelector(".books-list").innerHTML = strHtmls.join('')
 }
+
 function renderDetailsModal(bookId) {
     var currBook = getBook(bookId)
 
@@ -115,11 +119,12 @@ function onUpdateBook(bookId) {
     updateBook(currBook)
 }
 $('#book-details').on('show.bs.modal', function (event) {
-    debugger
     var currBook = getBook(event.relatedTarget.id)
     console.log(currBook)
 
 })
-function onReadBook() {
+
+function onSetLang(lang) {
+    setLang(lang)
 
 }

@@ -1,3 +1,9 @@
+.rtl{
+    direction: rtl;
+}
+.table{
+    margin-top:50px,
+}
 .read-book{
     background: green;
     border: black;
@@ -10,4 +16,18 @@
 .remove-book{
     background:rgb(146, 34, 34);
     border: black;
+}
+.flex-box-top{
+    display: flex;
+    justify-content: space-around
+}
+.dropdown-btn{
+    background: darkcyan;
+}
+
+option:hover{
+    cursor: pointer;
+}
+h1{
+    text-align: center;
 }

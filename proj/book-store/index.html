@@ -6,25 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    
+
 
     <link rel="stylesheet" href="css/table.css">
     <title>The Worm Book</title>
 </head>
 
 <body onload="init()">
-    <h1>Welcome To The BookWorm</h1>
-    <!-- Editable table -->
+    <h1 data-trans="page-title">Welcome To The BookWorm</h1>
     <div class="card">
-        <button id="1111" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="">Create
-            Book</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="flex-box-top">
+            <button id="1111" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="" data-trans="create-book">Create
+                Book</button>
+            <div class="dropdown float-right">
+                <button data-trans="lang-filter" class="btn btn-secondary dropdown-toggle dropdown-btn" type="button"
+                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Language
+                </button>
+                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                    <option onclick="onSetLang(this.value)" value="en">English</option>
+                    <option onclick="onSetLang(this.value)" value="he">Hebrew</option>
+                </div>
+            </div>
+        </div>
+        <div class=change-lang>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create new book</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" data-trans="create-book">Create book</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -32,28 +44,29 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="book-title" class="col-form-label">Book Title</label>
+                                <label for="book-title" class="col-form-label" data-trans="book-name">Book Title</label>
                                 <input type="text" class="form-control" id="book-title">
                             </div>
                             <div class="form-group">
-                                <label for="book-price" class="col-form-label">Price</label>
+                                <label for="book-price" class="col-form-label" data-trans="book-price">Price</label>
                                 <textarea class="form-control" id="book-price"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="book-photo" class="col-form-label">Photo (url)</label>
+                                <label for="book-photo" class="col-form-label" data-trans="book-photo">Photo (url)</label>
                                 <textarea class="form-control" id="book-photo"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-trans="modal-close">Close</button>
                         <span class="btn-div"></span>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Books avaliable</h3>
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4" data-trans="books-avaliable">Books
+            avaliable</h3>
         <div class="card-body">
             <div id="table" class="table-editable">
                 <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x"
@@ -61,17 +74,24 @@
 
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <tr>
-
+                        <th data-trans="book-id" class="text-center">Book ID</th>
+                        <th data-trans="book-name" class="text-center">Book Title</th>
+                        <th data-trans="book-price" class="text-center">Price</th>
+                        <th data-trans="book-action" class="text-center">Actions</th>
                     </tr>
+                    <tbody class="books-list">
+                    </tbody>
                 </table>
+        </div>
+        
 
-    <div class = "detail-modal"></div>
+                <div class="detail-modal"></div>
 
                 <script src="lib/jquery/jquery-2.2.4.min.js"></script>
                 <script src="lib/bootstrap/javascripts/bootstrap.min.js"></script>
-                <script src="js/util.js"></script>
                 <script src="js/main.js"></script>
-                <script src="js/tableFunc.js"></script>
+                <script src="js/i18n-service.js"></script>
+                <script src="js/util.js"></script>
                 <script src="js/book-service.js"></script>
 </body>
 
